@@ -1,0 +1,12 @@
+#pageContent {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttonAddToCart {
+    width: 125px;
+    height: 25px;
+    background-color: green;
+}
