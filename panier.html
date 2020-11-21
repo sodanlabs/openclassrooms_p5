@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="css/produit.css">
+    <link rel="stylesheet" type="text/css" href="css/panier.css">
+
+    <script type="text/javascript" src="js/Basket.js" defer></script>
     <script type="text/javascript" src="js/Product.js" defer></script>
     <script type="text/javascript" src="js/panier.js" defer></script>
 </head>
@@ -18,6 +20,30 @@
         <div><a href="panier.html">Panier</a></div>
     </header>
     <main id="pageContent">
+        <table id='table'>
+            <thead>
+            <tr>
+            <th scope="col"></th>
+            <th scope="col">Nom du produit</th>
+            <th scope="col">Vernis selectionné</th>
+            <th scope="col">Prix unitaire</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Sous-total</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class='totalsRow'>Total</td>
+                <td class='totalsRow'></td>
+                <td class='totalsRow'></td>
+                <td class='totalsRow'></td>
+                <td class='totalsRow'></td>
+                <td id="totalPrice" class='totalsRow'></td>
+            </tr>
+        </tfoot>
+        </table>
     </main>
     <footer class="footer">
     </footer>

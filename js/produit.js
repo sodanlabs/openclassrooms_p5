@@ -1,5 +1,46 @@
 "use strict"
 
+function modifyTotalAmount(price) {
+    let totalAmount = Number(localStorage.getItem('totalAmount'));
+    totalAmount += price;
+    localStorage.setItem('totalAmount', totalAmount);
+}
+
+function addToCart() {
+    const productId = singleProduct.id;
+    const varnishSelected = document.getElementById("varnishSelector").value;
+    const productPrice = singleProduct.price;
+    let quantity = 1;
+
+    if (localStorage.length <= 0) {
+        const createbasket = [];
+        localStorage.setItem('basket', JSON.stringify(createbasket));
+        localStorage.setItem('totalAmount', 0);
+    }
+
+    const basket = JSON.parse(localStorage.getItem("basket"));
+
+    if (basket.length > 0) {
+        let flag = false;
+        for (let product of basket) {
+            if (product[0] === productId && product[5] === varnishSelected) {
+                product[6]++; // quantité ++
+                modifyTotalAmount(productPrice);
+                flag = true;
+            }
+        }
+        if (flag === false) {
+            basket.push([productId, singleProduct.name, singleProduct.description, productPrice, singleProduct.imageUrl, varnishSelected, quantity]);
+            modifyTotalAmount(productPrice);
+        }
+    } else {
+        basket.push([productId, singleProduct.name, singleProduct.description, productPrice, singleProduct.imageUrl, varnishSelected, quantity]);
+        modifyTotalAmount(productPrice);
+    }
+    localStorage.setItem('basket', JSON.stringify(basket));
+    // window.alert("Produit ajouté au panier");
+}
+
 function getId() {
     const dataQuery = window.location.search;
     const id = dataQuery.replace("?_id=", "");
@@ -16,7 +57,8 @@ async function loadOneProduct() {
         });
         if (response.ok) {
             const data = await response.json();
-            const singleProduct = new Products(data._id, data.name, data.description, data.price, data.imageUrl, data.varnish);
+            singleProduct = new Products(data._id, data.name, data.description, data.price, data.imageUrl, data.varnish);
+            singleProduct.appendTileProductTopageContent();
             singleProduct.appendProductVarnishSelector();
 
             document.getElementById(singleProduct.id).removeAttribute("href");
@@ -38,46 +80,15 @@ function addButtonAddToCart() {
     return buttonAddToCart.id;
 }
 
-
-
-/* ************************************************************************** */
-
-function addToCart() {
-
-    const productId = document.getElementById(getId()).id;
-    const varnishSelected = document.getElementById("varnishSelector").value;
-    const productPrice = document.getElementsByClassName('productPrice')[0].textContent;
-    let quantity = 1;
-
-    if(localStorage.length <= 0) {
-    const createbasket = [];
-    localStorage.setItem('basket', JSON.stringify(createbasket));
-    }
-    
-    const basket = JSON.parse(localStorage.getItem("basket"));
-
-    if (basket.length > 0) {
-        let flag = false;
-        for (let product of basket) {
-            if (product[0] === productId && product[1] === varnishSelected) {
-                product[3]++;
-                flag = true;
-            }
-        }
-        if (flag === false) {
-            basket.push([productId, varnishSelected, productPrice, quantity]);
-        }
-    } else {
-        basket.push([productId, varnishSelected, productPrice, quantity]);
-    }
-    localStorage.setItem('basket', JSON.stringify(basket));
-}
+/*******************************************************************************/
 
 loadOneProduct();
 
+var singleProduct;
+
 const button = document.getElementById(addButtonAddToCart());
 button.addEventListener("click", (event) => {
-addToCart();
+    addToCart();
 });
 
 

@@ -8,37 +8,28 @@ class Products {
         this.price = price;
         this.imageUrl = imageUrl;
         this.varnish = varnish;
-        const tileProduct = this.createTileProduct(
-            this.id,
-            this.name,
-            this.description,
-            this.price,
-            this.imageUrl,
-            this.varnish
-        );
-        document.getElementById("pageContent").appendChild(tileProduct);
     }
 
-    createTileProduct(id, name, description, price, imageUrl, varnish) {
+    createTileProduct() {
         const tile = document.createElement("a");
-        tile.id = id;
+        tile.id = this.id;
         tile.classList.add("product");
-        tile.setAttribute('href', "produit.html?_id=" + id);
-        
+        tile.setAttribute('href', "produit.html?_id=" + this.id);
+
         const productImage = document.createElement("img");
-        productImage.setAttribute("src", imageUrl);
+        productImage.setAttribute("src", this.imageUrl);
         productImage.classList.add("productImage");
 
         const productName = document.createElement("p");
-        productName.textContent = name;
+        productName.textContent = this.name;
         productName.classList.add("productName");
 
         const productDescription = document.createElement("p");
-        productDescription.textContent = description;
+        productDescription.textContent = this.description;
         productDescription.classList.add("productDescription");
 
         const productPrice = document.createElement("p");
-        productPrice.textContent = price;
+        productPrice.textContent = this.price.toLocaleString('fr-FR', { minimumFractionDigits: '0', style: 'currency', currency: 'EUR' });
         productPrice.classList.add("productPrice");
 
         const productInfo = document.createElement("div");
@@ -53,20 +44,33 @@ class Products {
         return tile;
     }
 
+    appendTileProductTopageContent() {
+        const tileProduct = this.createTileProduct();
+        document.getElementById("pageContent").appendChild(tileProduct);
+    }
+
     appendProductVarnishSelector() {
         const productVarnishSelector = this.createVarnishSelector(this.varnish);
-        
+
+        const boxOfSelector = document.createElement('div');
+        boxOfSelector.classList.add("boxOfSelector");
+        const selectionMessage = document.createElement('p');
+        selectionMessage.textContent = "Nos vernis disponible :"
+
         productVarnishSelector.id = "varnishSelector";
-        //productVarnishSelector.classList.add("productVarnishSelector");
+
+        boxOfSelector.appendChild(selectionMessage);
+        boxOfSelector.appendChild(productVarnishSelector);
 
         const productInfo = document.getElementsByClassName("productInfo")[0];
-        productInfo.appendChild(productVarnishSelector);
+        productInfo.appendChild(boxOfSelector);
     }
 
     createVarnishSelector(arrayOfVarnish) {
         const varnishSelector = document.createElement("select");
         for (let varnishTint of arrayOfVarnish) {
             const option = document.createElement("option");
+            option.value = varnishTint;
             option.text = varnishTint;
             varnishSelector.append(option);
         }

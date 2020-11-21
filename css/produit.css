@@ -6,7 +6,7 @@
 }
 
 #buttonAddToCart {
+    border-radius: 15px;
     width: 125px;
     height: 25px;
-    background-color: green;
 }

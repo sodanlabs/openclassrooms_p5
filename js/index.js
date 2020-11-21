@@ -1,20 +1,5 @@
 "use strict"
 
-/*
- * Récupérer un objet
- * Afficher un objet
- * Récupérer tous les objets
- * Afficher tous les objets dynamiquement >> tableau d'objets ?
- * Créer un objet shoppingBasket dans localStorage
- * Stocker un product dans shoppingBasket
- * Afficher les products contenus dans shoppingBasket
- * Supprimer les products contenus dans shoppingBasket
- * Afficher une page dynamique par produit
- * 
-*/
-
-/* ************************************************************************** */
-
 async function loadProducts() {
     try {
         let response = await fetch("http://localhost:3000/api/furniture", {
@@ -24,9 +9,10 @@ async function loadProducts() {
             }
         });
         if (response.ok) {
-            let arrayOfProducts = await response.json();
-            arrayOfProducts.forEach(product => {
-                new Products(product._id, product.name, product.description, product.price, product.imageUrl, product.varnish);
+            let productList = await response.json();
+            productList.forEach(product => {
+                let newItem = new Products(product._id, product.name, product.description, product.price, product.imageUrl, product.varnish);
+                newItem.appendTileProductTopageContent();
             });
         } else {
             console.error('Response Erreur : ', response.status);
@@ -36,7 +22,7 @@ async function loadProducts() {
     }
 }
 
-/* ************************************************************************** */
+/*****************************************************************************/
 
 loadProducts();
 

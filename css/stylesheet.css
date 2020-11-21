@@ -29,11 +29,6 @@ body {
     padding: 50px; */
 }
 
-#pageProduit {
-    display: grid;
-    place-items: center;
-}
-
 .product {
     display: flex;
     margin: 25px;
@@ -56,6 +51,12 @@ body {
     border-radius: 15px;
 }
 
+.productImageArray {
+    width: 20%;
+    padding: 5px;
+    border-radius: 15px;
+}
+
 .productInfo {
     justify-self: space-around;
     /* display: flex;
@@ -68,9 +69,9 @@ body {
     padding: 5px;
 }
 
-.productPrice::after {
+/* .productPrice::after {
     content: " €";
-}
+} */
 
 @media screen and (max-width: 1130px) {
     #pageContent {

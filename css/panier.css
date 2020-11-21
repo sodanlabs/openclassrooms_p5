@@ -1,0 +1,27 @@
+#pageContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    width: 75%;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+td {
+    text-align: center;
+    width: 10%;
+}
+
+.totalsRow {
+    background-color: grey;
+}
+
+.invisible {
+    display: none;
+}
