@@ -1,25 +1,94 @@
-#pageContent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.mainPageContent {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
 }
 
 table {
-    width: 75%;
+  margin: 25px auto;
 }
 
 tbody tr:nth-child(odd) {
-    background-color: lightgray;
+  background-color: #9760e7;
 }
 
 td {
-    text-align: center;
-    width: 10%;
+  text-align: center;
+  width: 10%;
 }
 
 .totalsRow {
-    background-color: grey;
+  background-color: grey;
+}
+
+.formulaire {
+    display: flex;
+    flex-flow: column;
+}
+
+.formulaire input {
+    margin: 10px auto;
+}
+
+.client {
+    width: 300px;
+    box-sizing: border-box;
+    border: solid grey 1px;
+}
+
+.client:not(:placeholder-shown):not(:focus):invalid {
+    animation: wiggle 150ms;
+    animation-timing-function: linear;
+    background-color: #b20a37;
+    border: #b20a37 solid 2px;
+    color: white;
+}
+
+.client:hover {
+    transform: scale(1.05);
+    transition: transform 250ms;
+    transition-delay: 0, 150ms;
+}
+
+.client:focus {
+    border: black solid 2px;
+}
+
+.client::placeholder {
+    color:grey;
+}
+
+.client:focus::placeholder {
+    color:black;
+}
+
+.client:valid {
+    border:green solid 1px;
+}
+
+
+
+#confirmOrder {
+    border-radius: 15px;
+    margin: 25px;
+    align-self: flex-end;
+}
+
+#confirmOrder:hover {
+    transform: scale(1.25);
+    transition: transform 850ms;
+    transition-delay: 0, 250ms;
+    cursor: pointer;
+}
+
+@keyframes wiggle {
+    0% {transform: translate(1px, 0);}
+    50% {transform: translate(-1px, 0);}
+    100% {transform: translate(1px, 0);}
 }
 
 .invisible {

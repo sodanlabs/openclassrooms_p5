@@ -38,7 +38,7 @@ function addToCart() {
         modifyTotalAmount(productPrice);
     }
     localStorage.setItem('basket', JSON.stringify(basket));
-    // window.alert("Produit ajouté au panier");
+    alert("Produit ajouté au panier");
 }
 
 function getId() {

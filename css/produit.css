@@ -1,4 +1,4 @@
-#pageContent {
+.mainPageContent {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;

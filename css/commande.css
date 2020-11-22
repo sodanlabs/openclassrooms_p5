@@ -1,0 +1,21 @@
+.mainPageContent {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+}
+
+span {
+    font-weight: bolder;
+}
+
+#totalPrice:after {
+    content: " €";
+}
+
+.invisible {
+    display: none;
+}
