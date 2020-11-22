@@ -51,7 +51,7 @@ td {
 .client:hover {
     transform: scale(1.05);
     transition: transform 250ms;
-    transition-delay: 0, 150ms;
+    transition-delay: 0s, 150ms;
 }
 
 .client:focus {
@@ -81,7 +81,7 @@ td {
 #confirmOrder:hover {
     transform: scale(1.25);
     transition: transform 850ms;
-    transition-delay: 0, 250ms;
+    transition-delay: 0s, 250ms;
     cursor: pointer;
 }
 

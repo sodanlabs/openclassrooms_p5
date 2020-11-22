@@ -82,8 +82,6 @@ class Products {
         productVarnish.textContent = selectedVarnish;
         productVarnish.classList.add("selectedVarnish");
 
-        console.log("produit selectionné :", selectedProduct);
-        console.log(document.getElementById(selectedProduct));
         const productId = document.getElementById(selectedProduct);
         productId.appendChild(productVarnish);
     }

@@ -10,9 +10,9 @@
     <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <link rel="stylesheet" type="text/css" href="css/panier.css">
 
-    <script type="text/javascript" src="js/Contact.js" defer></script>
-    <script type="text/javascript" src="js/Basket.js" defer></script>
-    <script type="text/javascript" src="js/panier.js" defer></script>
+    <script src="js/Contact.js" defer></script>
+    <script src="js/Basket.js" defer></script>
+    <script src="js/panier.js" defer></script>
 </head>
 <body>
     <header class="header">
@@ -44,17 +44,17 @@
             </tr>
         </tfoot>
         </table>
-        <form id="orderForm" action="" method="post">
+        <form id="orderForm" method="post">
             <h3>Validation de la commande</h3>
             <h4>Veuillez entrer vos coordonnées</h4>
             <fieldset class='formulaire'>
-              <input class="client" id="customerLastName" placeholder="Nom" title="Format autorisé: Durand, Dupont-Moretti, Garcua Rodruguez..." minlenght="1" maxlenght="47" pattern="^[A-ZÀÁÉÈÊËÎÏÍÔÖÛÜÙÇ]+([ -][A-ZÀÁÉÈÊËÎÏÍÔÖÛÜÙÇ]+)*$" onkeyup="this.value = this.value.toUpperCase();" type="text" tabindex="1" required>
+              <input class="client" id="customerLastName" placeholder="Nom" title="Format autorisé: Durand, Dupont-Moretti, Garcua Rodruguez..." pattern="^[A-Z]{1}[A-Za-zàáéèêëîïíôöûüùç]+([ -][A-Z]{1}[A-Za-zàáéèêëîïíôöûüùç]+)*$" onkeyup="this.value = this.value.toUpperCase();" type="text" tabindex="1" required>
               
-              <input class="client" id="customerFirstName" placeholder="Prénom" title="Format autorisé: Elodie, Henri Louis, Pierre-Marie..." minlenght="3" maxlenght="13" pattern="^[A-ZÀÁÉÈÊËÎÏÍÔÖÛÜÙÇ]+([ -][A-ZÀÁÉÈÊËÎÏÍÔÖÛÜÙÇ]+)*$" onkeyup="this.value = this.value.toUpperCase();" type="text" tabindex="2" required>
+              <input class="client" id="customerFirstName" placeholder="Prénom" title="Format autorisé: Elodie, Henri Louis, Pierre-Marie..." pattern="^[A-Z]{2}[A-Za-zàáéèêëîïíôöûüùç]+([ -][A-Z]{1}[A-Za-zàáéèêëîïíôöûüùç]+)*$" onkeyup="this.value = this.value.toUpperCase();" type="text" tabindex="2" required>
 
-              <input class="client" id="customerAdress" placeholder="Adresse" title="Seuls les caractères alphanumériques et les . , - ' sont autorisés" minlenght="5" pattern="^[\wÀÁÉÈÊËÎÏÍÔÖÛÜÙÇ ,'.-]*$" onkeyup="this.value = this.value.toUpperCase();" type="text" tabindex="3" required>
+              <input class="client" id="customerAdress" placeholder="Adresse" title="Seuls les caractères alphanumériques et les . , - ' sont autorisés" pattern="^[\wÀÁÉÈÊËÎÏÍÔÖÛÜÙÇ ,'.-]*$" onkeyup="this.value = this.value.toUpperCase();" type="text" tabindex="3" required>
 
-              <input class="client" id="customerCity" placeholder="Ville" title="Format autorisé: Marseille, Cordes sous ciel, Châteauneuf-sur-Charente..." minlenght="1" maxlenght="45" pattern="^[A-ZÀÁÉÈÊËÎÏÍÔÖÛÜÙÇ -]*$" onkeyup="this.value = this.value.toUpperCase();" type="text" tabindex="4" required>
+              <input class="client" id="customerCity" placeholder="Ville" title="Format autorisé: Marseille, Cordes sous ciel, Châteauneuf-sur-Charente..." pattern="^[A-ZÀÁÉÈÊËÎÏÍÔÖÛÜÙÇ -]*$" onkeyup="this.value = this.value.toUpperCase();" type="text" tabindex="4" required>
 
               <input class="client" id="customerEmail" placeholder="E-mail" pattern="^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,4})$" type="email" tabindex="5" required>
             </fieldset>

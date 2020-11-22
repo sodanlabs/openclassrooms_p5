@@ -1,27 +1,34 @@
 "use strict"
+// Nettoyer les variables stockées dans localStorage
+function cleanLocalStorage() {
+    localStorage.removeItem("basket");
+    localStorage.removeItem("totalAmount");
+    localStorage.removeItem("confirmedOrder");
+}
 
+// Permettre d'afficher un message si le panier est vide
 function displayMessage(texte) {
-    const pageContent = document.body;
-    const divEmptyBasket = document.createElement('div');
+    const elementBody = document.body;
+    const messageDisplayed = document.createElement('div');
+    messageDisplayed.classList.add("messageDisplayed");
     const p = document.createElement('p');
     const text = document.createTextNode(texte);
 
     p.appendChild(text);
-    divEmptyBasket.appendChild(p);
-    pageContent.appendChild(divEmptyBasket);
+    messageDisplayed.appendChild(p);
+    elementBody.appendChild(messageDisplayed);
 
     const invisiblePageContent = document.getElementById("pageContent");
     invisiblePageContent.classList.toggle('invisible')
 }
 
+// Récupérer la réponse du serveur de la commande effectuée
 function loadOrderForm() {
     const confirmedOrder = JSON.parse(localStorage.getItem("confirmedOrder"));
 
     if (!confirmedOrder) {
         displayMessage("Vous n'avez pas encore validé votre panier, il n'y a pas de commande en cours.");
     } else {
-        console.log("Lancement de l'affichage du formulaire");
-
         const customerFirstName = document.getElementById("customerFirstName");
         customerFirstName.textContent = confirmedOrder.contact.firstName;
 
@@ -29,17 +36,15 @@ function loadOrderForm() {
         orderNumber.textContent = confirmedOrder.orderId;
 
         const totalPrice = document.getElementById("totalPrice");
-        const totalAmount = localStorage.getItem("totalAmount");
-        totalPrice.textContent = totalAmount;
+        const totalAmount = parseInt(localStorage.getItem("totalAmount"));
+        totalPrice.textContent = totalAmount.toLocaleString('fr-FR', { minimumFractionDigits: '0', style: 'currency', currency: 'EUR' });
 
         const orinocoCoin = document.getElementById('orinocoCoin');
         orinocoCoin.textContent = totalAmount * 0.015;
     }
+    cleanLocalStorage();
 }
 
-
 /*****************************************************************************/
-//         // localStorage.setItem('confirmedOrder', JSON.stringify(data));
-
 
 loadOrderForm();

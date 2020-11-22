@@ -1,11 +1,13 @@
 "use strict"
 
+// Modifier la valeur globale du panier
 function modifyTotalAmount(price) {
     let totalAmount = Number(localStorage.getItem('totalAmount'));
     totalAmount += price;
     localStorage.setItem('totalAmount', totalAmount);
 }
 
+// Ajouter le produit et le vernis séléctionné dans le panier
 function addToCart() {
     const productId = singleProduct.id;
     const varnishSelected = document.getElementById("varnishSelector").value;
@@ -41,12 +43,26 @@ function addToCart() {
     alert("Produit ajouté au panier");
 }
 
+// Généner le bouton "Ajouter au panier" et l'affiche sur la page
+function addButtonAddToCart() {
+    const pageContent = document.getElementById("pageContent");
+    const buttonAddToCart = document.createElement('button');
+
+    buttonAddToCart.id = "buttonAddToCart";
+    buttonAddToCart.textContent = "Ajouter au panier";
+    pageContent.appendChild(buttonAddToCart);
+
+    return buttonAddToCart.id;
+}
+
+// Récupérer l'Id depuis l'url
 function getId() {
     const dataQuery = window.location.search;
     const id = dataQuery.replace("?_id=", "");
     return id;
 }
 
+// Récupérer les informations du produit à partir de son Id et le charge dans la page
 async function loadOneProduct() {
     try {
         const response = await fetch("http://localhost:3000/api/furniture/" + getId(), {
@@ -70,20 +86,12 @@ async function loadOneProduct() {
     }
 }
 
-function addButtonAddToCart() {
-    const pageContent = document.getElementById("pageContent");
-    const buttonAddToCart = document.createElement('button');
-    buttonAddToCart.id = "buttonAddToCart";
-    buttonAddToCart.textContent = "Ajouter au panier";
-    pageContent.appendChild(buttonAddToCart);
-
-    return buttonAddToCart.id;
-}
-
 /*******************************************************************************/
+
 
 loadOneProduct();
 
+// Variable globale
 var singleProduct;
 
 const button = document.getElementById(addButtonAddToCart());

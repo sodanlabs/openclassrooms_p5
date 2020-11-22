@@ -1,5 +1,79 @@
 "use strict"
 
+// Envoyer l'objet au serveur et renvoie sur la page commande.html
+function submitOrder(orderToSubmit) {
+    fetch('http://localhost:3000/api/furniture/order', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(orderToSubmit)
+      })
+    .then(response => response.json())
+    .then(confirmedOrder => {
+        alert("La commande a été validé, vous allez être redirigé vers la page de confirmation de commande.");
+        localStorage.setItem('confirmedOrder', JSON.stringify(confirmedOrder));
+        window.location.href = "./commande.html?" + confirmedOrder.orderId;
+    })
+    .catch(error => console.error('Erreur : ', error));
+}
+
+// Vérifier que le forumlaire soit valide avant de construire l'objet à passer au serveur
+function checkData() {
+    let customerLastName = document.getElementById('customerLastName');
+    let customerFirstName = document.getElementById('customerFirstName');
+    let customerAdress = document.getElementById('customerAdress');
+    let customerCity = document.getElementById('customerCity');
+    let customerEmail = document.getElementById('customerEmail');
+
+    if (document.getElementById("orderForm").checkValidity()) {
+        const contact = new Contacts(customerFirstName.value, customerLastName.value, customerAdress.value, customerCity.value, customerEmail.value);
+
+        const loadBasket = JSON.parse(localStorage.getItem("basket"));
+
+        let tableOfSelectedProducts = [];
+
+        // Parcours des articles du Panier et ajout dans le tableau product sans les quantités, ni les vernis choisis
+        for (let product of loadBasket) {
+            if (tableOfSelectedProducts.length > 0) {
+                let flag = false;
+                for (let item of tableOfSelectedProducts) {
+                    if (product[0] === item[0]) {
+                        flag = true;
+                    }
+                }
+                if (flag === false) {
+                    tableOfSelectedProducts.push(product[0]);
+                }
+            } else {
+                tableOfSelectedProducts.push(product[0]);
+            }
+        }
+        const newOrder = new Order(contact, tableOfSelectedProducts);
+
+        submitOrder(newOrder);
+    } else {
+        alert("Veuillez inscrire une valeur correcte dans le champs en rouge pour valider le formulaire.");
+    }
+}
+
+// Permettre d'afficher un message si le panier est vide
+function displayMessage(texte) {
+    const elementBody = document.body;
+    const messageDisplayed = document.createElement('div');
+    messageDisplayed.classList.add("messageDisplayed");
+    const p = document.createElement('p');
+    const text = document.createTextNode(texte);
+
+    p.appendChild(text);
+    messageDisplayed.appendChild(p);
+    elementBody.appendChild(messageDisplayed);
+
+    const invisiblePageContent = document.getElementById("pageContent");
+    invisiblePageContent.classList.toggle('invisible')
+}
+
+// Récupérer le montant total des achats 
 function getTotalAmount() {
     const totalAmount = document.getElementById('totalPrice');
     const basketTotalAmount = Number(localStorage.getItem('totalAmount'));
@@ -7,6 +81,7 @@ function getTotalAmount() {
     totalAmount.textContent = basketTotalAmount.toLocaleString('fr-FR', { minimumFractionDigits: '0', style: 'currency', currency: 'EUR' });
 }
 
+// Créer une nouvelle ligne dans le tableau de la page panier
 function loadProductfromBasket(basket) {
     let totalPrice = document.getElementById('totalPrice').textContent;
     totalPrice = "0";
@@ -15,21 +90,7 @@ function loadProductfromBasket(basket) {
     });
 }
 
-function displayMessage(texte) {
-    const pageContent = document.body;
-    const divEmptyBasket = document.createElement('div');
-    const p = document.createElement('p');
-    const text = document.createTextNode(texte);
-
-    p.appendChild(text);
-    divEmptyBasket.appendChild(p);
-    pageContent.appendChild(divEmptyBasket);
-
-    const invisiblePageContent = document.getElementById("pageContent");
-    invisiblePageContent.classList.toggle('invisible')
-
-}
-
+// Récupérer les données du panier
 function displayBasket() {
     const basket = JSON.parse(localStorage.getItem("basket"));
 
@@ -41,71 +102,9 @@ function displayBasket() {
     }
 }
 
-displayBasket();
-
-function submitOrder(orderToSubmit) {
-    fetch('http://localhost:3000/api/furniture/order', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(orderToSubmit)
-      })
-    .then(response => response.json())
-    .then(confirmedOrder => {
-        console.log("data :", confirmedOrder);
-        localStorage.setItem('confirmedOrder', JSON.stringify(confirmedOrder));
-        window.location.href = "./commande.html?" + confirmedOrder.orderId;
-    })
-    .catch(error => console.error('Erreur : ', error));
-}
-
-function checkData() {
-    let customerLastName = document.getElementById('customerLastName');
-    let customerFirstName = document.getElementById('customerFirstName');
-    let customerAdress = document.getElementById('customerAdress');
-    let customerCity = document.getElementById('customerCity');
-    let customerEmail = document.getElementById('customerEmail');
-
-    if (document.getElementById("orderForm").checkValidity()) {
-
-        const contact = new Contacts(customerFirstName.value, customerLastName.value, customerAdress.value, customerCity.value, customerEmail.value);
-
-        const loadBasket = JSON.parse(localStorage.getItem("basket"));
-
-        let tableOfSelectedProducts = [];
-
-        // Parcours des articles du Panier et ajout dans le tableau de produits avec les quantités tout vernis confondu. Ne tient pas compte de vernis selectionné.
-        for (let product of loadBasket) {
-            if (tableOfSelectedProducts.length > 0) {
-                let flag = false;
-                for (let item of tableOfSelectedProducts) {
-                    if (product[0] === item[0]) {
-                        // item[1] += product[6];
-                        flag = true;
-                    }
-                }
-                if (flag === false) {
-                    // tableOfSelectedProducts.push([product[0], product[6]]); // productId, productQuantity
-                    tableOfSelectedProducts.push(product[0]);
-                }
-            } else {
-                // tableOfSelectedProducts.push([product[0], product[6]]); // productId, productQuantity
-                tableOfSelectedProducts.push(product[0]);
-            }
-        }
-        const newOrder = new Order(contact, tableOfSelectedProducts);
-
-        console.log({newOrder});
-        submitOrder(newOrder);
-
-    } else {
-        alert("Veuillez inscrire une valeur correcte dans le champs en rouge pour valider le formulaire.");
-    }
-
-}
-
 /*****************************************************************************/
+
+displayBasket();
 
 const button = document.getElementById('confirmOrder');
 button.addEventListener("click", (event) => {

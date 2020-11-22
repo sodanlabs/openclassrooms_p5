@@ -12,10 +12,6 @@ span {
     font-weight: bolder;
 }
 
-#totalPrice:after {
-    content: " €";
-}
-
 .invisible {
     display: none;
 }

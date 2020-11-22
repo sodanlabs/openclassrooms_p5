@@ -1,6 +1,7 @@
 "use strict"
 
-async function loadProducts() {
+// Récupérer les produits "Meuble" depuis l'api
+async function getProducts() {
     try {
         let response = await fetch("http://localhost:3000/api/furniture", {
             method: 'GET',
@@ -24,5 +25,5 @@ async function loadProducts() {
 
 /*****************************************************************************/
 
-loadProducts();
+getProducts();
 
