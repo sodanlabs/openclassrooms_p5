@@ -10,9 +10,9 @@ async function getProducts() {
             }
         });
         if (response.ok) {
-            let productList = await response.json();
+            const productList = await response.json();
             productList.forEach(product => {
-                let newItem = new Products(product._id, product.name, product.description, product.price, product.imageUrl, product.varnish);
+                const newItem = new Products(product._id, product.name, product.description, product.price, product.imageUrl, product.varnish);
                 newItem.appendTileProductTopageContent();
             });
         } else {
@@ -20,6 +20,7 @@ async function getProducts() {
         }
     } catch (error) {
         console.error('Catch Erreur : ', error);
+        displayMessage("Une erreur sur le serveur est survenue, veuillez réessayer plus tard");
     }
 }
 

@@ -88,16 +88,25 @@ async function loadOneProduct() {
 
 /*******************************************************************************/
 
+if (!getId()) {
+    displayMessage("Aucun produit selectionné");
+} else {
+    loadOneProduct();
 
-loadOneProduct();
+    // Variable globale
+    var singleProduct;
 
-// Variable globale
-var singleProduct;
+    const button = document.getElementById(addButtonAddToCart());
+    button.addEventListener("click", (event) => {
+        addToCart();
+    });
 
-const button = document.getElementById(addButtonAddToCart());
-button.addEventListener("click", (event) => {
-    addToCart();
-});
+}
+
+
+
+
+
 
 
 

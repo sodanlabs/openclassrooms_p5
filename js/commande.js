@@ -6,21 +6,7 @@ function cleanLocalStorage() {
     localStorage.removeItem("confirmedOrder");
 }
 
-// Permettre d'afficher un message si le panier est vide
-function displayMessage(texte) {
-    const elementBody = document.body;
-    const messageDisplayed = document.createElement('div');
-    messageDisplayed.classList.add("messageDisplayed");
-    const p = document.createElement('p');
-    const text = document.createTextNode(texte);
 
-    p.appendChild(text);
-    messageDisplayed.appendChild(p);
-    elementBody.appendChild(messageDisplayed);
-
-    const invisiblePageContent = document.getElementById("pageContent");
-    invisiblePageContent.classList.toggle('invisible')
-}
 
 // Récupérer la réponse du serveur de la commande effectuée
 function loadOrderForm() {
