@@ -1,41 +1,36 @@
-#pageContent {
-    /* padding: 16px 0; */
-}
+@import url("stylesheet.css");
 
 .mentionsLegales {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 40px;
-    margin-bottom: 20px;
-    text-align: justify;
-    font-family: "Montserrat", Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 40px;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-family: "Montserrat", Verdana, sans-serif;
 }
 
 .mentionsLegales h2 {
-    font-size: 18px;
-    margin-top: 5px;
-    margin-bottom: 0;
+  margin-top: 5px;
+  margin-bottom: 0;
+  font-size: 18px;
 }
 
 .mentionsLegales p {
-margin-top: 5px;
-
+  margin-top: 5px;
 }
 
 .construction {
-    font-style: italic;
+  font-style: italic;
 }
 
 @media screen and (min-width: 560px) {
-    #pageContent {
-      margin-left: auto;
-      margin-right: auto;
-    }
-  
-    .mentionsLegales {
-      width: 560px;
-    }
+  #pageContent {
+    margin-right: auto;
+    margin-left: auto;
   }
 
-
+  .mentionsLegales {
+    width: 560px;
+  }
+}

@@ -10,5 +10,5 @@ function displayMessage(texte) {
     elementBody.appendChild(messageDisplayed);
 
     const invisiblePageContent = document.getElementById("pageContent");
-    invisiblePageContent.classList.toggle('invisible')
+    invisiblePageContent.classList.toggle('invisible');
 }

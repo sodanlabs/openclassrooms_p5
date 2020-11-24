@@ -1,15 +1,23 @@
+@import url("stylesheet.css");
+
 .mainPageContent {
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 75%;
+  justify-content: space-between;
 }
 
-table {
-  margin: 25px auto;
+.collapse {
+  display: none;
+}
+
+.productImageArray {
+  width: 70px;
+}
+
+.arrayOfProduct {
+  margin-top: 15px;
+  width: 95%;
 }
 
 tbody tr:nth-child(odd) {
@@ -17,80 +25,83 @@ tbody tr:nth-child(odd) {
 }
 
 td {
-  text-align: center;
   width: 10%;
+  text-align: center;
 }
 
 .totalsRow {
   background-color: grey;
 }
 
-.formulaire {
-    display: flex;
-    flex-flow: column;
+#orderForm {
+  margin-top: 40px;
+  text-align: center;
 }
 
-.formulaire input {
-    margin: 10px auto;
+.formulaire {
+  display: flex;
+  flex-flow: column;
 }
 
 .client {
-    width: 300px;
-    box-sizing: border-box;
-    border: solid grey 1px;
+  box-sizing: border-box;
+  margin: 10px;
+  border: solid grey 1px;
+  width: 250px;
 }
 
 .client:not(:placeholder-shown):not(:focus):invalid {
-    animation: wiggle 150ms;
-    animation-timing-function: linear;
-    background-color: #b20a37;
-    border: #b20a37 solid 2px;
-    color: white;
-}
-
-.client:hover {
-    transform: scale(1.05);
-    transition: transform 250ms;
-    transition-delay: 0s, 150ms;
+  border: #b20a37 solid 2px;
+  background-color: #b20a37;
+  animation: wiggle 150ms;
+  animation-timing-function: linear;
+  color: white;
 }
 
 .client:focus {
-    border: black solid 2px;
+  border: #8f5bfe solid 2px;
 }
 
 .client::placeholder {
-    color:grey;
-}
-
-.client:focus::placeholder {
-    color:black;
+  color: grey;
 }
 
 .client:valid {
-    border:green solid 1px;
+  border: green solid 1px;
+  background-color: lightgreen;
 }
 
-
-
 #confirmOrder {
-    border-radius: 15px;
-    margin: 25px;
-    align-self: flex-end;
+  float: right;
+  margin: 25px 0;
+  border-radius: 15px;
 }
 
 #confirmOrder:hover {
-    transform: scale(1.25);
-    transition: transform 850ms;
-    transition-delay: 0s, 250ms;
-    cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 850ms;
+  transition-delay: 0s, 250ms;
+  cursor: pointer;
 }
 
 @keyframes wiggle {
-    0% {transform: translate(1px, 0);}
-    50% {transform: translate(-1px, 0);}
-    100% {transform: translate(1px, 0);}
+  0% {
+    transform: translate(1px, 0);
+  }
+  50% {
+    transform: translate(-1px, 0);
+  }
+  100% {
+    transform: translate(1px, 0);
+  }
 }
 
-.invisible {
-    display: none;
+@media screen and (min-width: 500px) {
+  .arrayOfProduct {
+    margin-top: 50px;
+  }
+
+  .collapse {
+    display: table-cell;
+  }
 }

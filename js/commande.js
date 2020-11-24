@@ -1,12 +1,11 @@
 "use strict"
+
 // Nettoyer les variables stockées dans localStorage
 function cleanLocalStorage() {
     localStorage.removeItem("basket");
     localStorage.removeItem("totalAmount");
     localStorage.removeItem("confirmedOrder");
 }
-
-
 
 // Récupérer la réponse du serveur de la commande effectuée
 function loadOrderForm() {

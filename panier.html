@@ -19,7 +19,6 @@
     <meta property="og:description" content="orinoco" />
 
     <link rel="shortcut icon" type="image/x-icon" href="pictures/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
     <link rel="stylesheet" type="text/css" href="css/panier.css">
 
     <script src="js/errorMessage.js" defer></script>
@@ -38,9 +37,9 @@
             <tr>
             <th scope="col"></th>
             <th scope="col">Nom du produit</th>
-            <th scope="col">Vernis selectionné</th>
-            <th scope="col">Prix unitaire</th>
-            <th scope="col">Quantité</th>
+            <th scope="col" class="collapse">Vernis selectionné</th>
+            <th scope="col" class="collapse">Prix unitaire</th>
+            <th scope="col" class="collapse">Quantité</th>
             <th scope="col">Sous-total</th>
             </tr>
         </thead>
@@ -49,9 +48,9 @@
         <tfoot>
             <tr>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td class="collapse"></td>
+                <td class="collapse"></td>
+                <td class="collapse"></td>
                 <td class='totalsRow'>Total</td>
                 <td id="totalPrice" class='totalsRow'></td>
             </tr>

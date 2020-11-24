@@ -33,15 +33,18 @@ class Lines {
 
         const cell2 = line.insertCell(2);
         const lineProductSelectedVarnish = document.createTextNode(this.productSelectedVarnish);
+        cell2.classList.add("collapse");
         cell2.appendChild(lineProductSelectedVarnish);
 
         const cell3 = line.insertCell(3);
         const lineProductUnitPrice = document.createTextNode(this.productUnitPrice.toLocaleString('fr-FR', { minimumFractionDigits: '0', style: 'currency', currency: 'EUR' }));
         cell3.classList.add("price");
+        cell3.classList.add("collapse");
         cell3.appendChild(lineProductUnitPrice);
 
         const cell4 = line.insertCell(4);
         const lineProductQuantity = document.createTextNode(this.productQuantity);
+        cell4.classList.add("collapse");
         cell4.appendChild(lineProductQuantity);
 
         const cell5 = line.insertCell(5);

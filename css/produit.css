@@ -1,39 +1,30 @@
+@import url("stylesheet.css");
+
 .flex {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
 }
 
 #buttonAddToCart {
-    border-radius: 15px;
-    width: 125px;
-    height: 25px;
+  border-radius: 15px;
+  width: 125px;
+  height: 25px;
 }
 
-/***************************************************************/
-
+.footer {
+  position: absolute;
+}
 
 .boxOfSelector {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 select {
-    font-family: "Montserrat", Verdana, sans-serif;
-    height: 25px;
-    border-radius: 15px;
-}
-
-@media screen and (max-width: 1130px) {
-    .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .grid {
-        grid-template-columns: repeat(1, 1fr);
-    }
+  border-radius: 15px;
+  height: 25px;
+  font-family: "Montserrat", Verdana, sans-serif;
 }
