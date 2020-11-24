@@ -4,8 +4,9 @@ body {
   font-family: "Montserrat", Verdana, sans-serif;
   background-color: #f3e9f1;
   color: #261624;
-  position: relative;
   min-height: 100vh;
+position: relative;
+padding-bottom: 30px;
 }
 
 .logo {
@@ -30,6 +31,7 @@ body {
 }
 
 .footer {
+  margin-top: 30px;
   bottom: 0;
   left: 0;
   right: 0;
