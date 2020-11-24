@@ -1,4 +1,4 @@
-.mainPageContent {
+.flex {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
@@ -9,4 +9,31 @@
     border-radius: 15px;
     width: 125px;
     height: 25px;
+}
+
+/***************************************************************/
+
+
+.boxOfSelector {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+select {
+    font-family: "Montserrat", Verdana, sans-serif;
+    height: 25px;
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 1130px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

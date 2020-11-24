@@ -53,11 +53,9 @@ function checkData() {
 
         submitOrder(newOrder);
     } else {
-        alert("Veuillez inscrire une valeur correcte dans le champs en rouge pour valider le formulaire.");
+        alert("Veuillez inscrire une valeur dans les champs vides ou en rouge pour valider le formulaire.");
     }
 }
-
-
 
 // Récupérer le montant total des achats 
 function getTotalAmount() {
@@ -83,6 +81,11 @@ function displayBasket() {
     if (localStorage.length <= 0) {
         displayMessage("Votre panier est vide");
     } else {
+        const button = document.getElementById('confirmOrder');
+        button.addEventListener("click", (event) => {
+            event.preventDefault();
+            checkData();
+        });
         loadProductfromBasket(basket);
         getTotalAmount();
     }
@@ -92,8 +95,3 @@ function displayBasket() {
 
 displayBasket();
 
-const button = document.getElementById('confirmOrder');
-button.addEventListener("click", (event) => {
-    event.preventDefault();
-    checkData();
-});

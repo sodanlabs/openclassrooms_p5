@@ -1,0 +1,41 @@
+#pageContent {
+    /* padding: 16px 0; */
+}
+
+.mentionsLegales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 40px;
+    margin-bottom: 20px;
+    text-align: justify;
+    font-family: "Montserrat", Verdana, sans-serif;
+}
+
+.mentionsLegales h2 {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
+.mentionsLegales p {
+margin-top: 5px;
+
+}
+
+.construction {
+    font-style: italic;
+}
+
+@media screen and (min-width: 560px) {
+    #pageContent {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    .mentionsLegales {
+      width: 560px;
+    }
+  }
+
+

@@ -27,8 +27,8 @@ function loadOrderForm() {
 
         const orinocoCoin = document.getElementById('orinocoCoin');
         orinocoCoin.textContent = totalAmount * 0.015;
-    }
-    cleanLocalStorage();
+        cleanLocalStorage();
+    }  
 }
 
 /*****************************************************************************/

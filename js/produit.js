@@ -14,6 +14,7 @@ function addToCart() {
     const productPrice = singleProduct.price;
     let quantity = 1;
 
+    // Création du panier s'il n'existe pas dans localStorage
     if (localStorage.length <= 0) {
         const createbasket = [];
         localStorage.setItem('basket', JSON.stringify(createbasket));
@@ -22,6 +23,7 @@ function addToCart() {
 
     const basket = JSON.parse(localStorage.getItem("basket"));
 
+    // Si le panier est vide, push directement le produit dans le panier, sinon modifie la quantité
     if (basket.length > 0) {
         let flag = false;
         for (let product of basket) {
@@ -100,7 +102,6 @@ if (!getId()) {
     button.addEventListener("click", (event) => {
         addToCart();
     });
-
 }
 
 

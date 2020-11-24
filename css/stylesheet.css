@@ -2,44 +2,75 @@ body {
     box-sizing: border-box;
     margin: 0;
     min-height: 100vh;
-    font-family: Calibri, Verdana, sans-serif;
+    font-family: "Montserrat", Verdana, sans-serif;
     text-align: center;
     background-color: #f3e9f1;
+    color: #261624;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+.header,
+.footer {
+    background-color: #f3e9f1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header {
-    background-color: #eab26f;
-    display: flex;
-    justify-content: space-between;
-    padding: 50px 75px;
+    padding: 25px 75px;
 }
 
 .header a:link,
-.header a:visited {
+.header a:visited,
+.footer a:link,
+.footer a:visited {
     color: #261624;
+    /* color: #8f5bfe; */
     font-weight: bold;
     text-decoration: none;
 }
 
-.mainPageContent {
+.footer {
+    padding: 5px 25px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     grid-auto-rows: minmax(150px, auto);
-    /* justify-items: center; */
-    /* justify-content: space-around;
-    padding: 50px; */
+    margin-bottom: 20px;
+    justify-items: center;
+    justify-content: space-around;
+    align-items: center;
+    /* padding: 50px; */
+}
+
+.messageDisplayed{
+display: grid;
+place-items: center;
+height: 75vmin;
 }
 
 .product {
+    box-sizing: border-box;
     display: flex;
     margin: 25px;
-    max-width: 500px;
-    max-height: 250px;
-    background-color: #9760e7;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(230,138,8,1) 0%, rgba(174,108,165,1) 50%, rgba(143,91,254,1) 100%);
+    width: 400px;
     text-align: center;
     text-decoration: none;
-    border-radius: 10px;
+    font-size: 14px;
 }
 
 .product:visited,
@@ -59,19 +90,24 @@ body {
     border-radius: 15px;
 }
 
+.productName,
+.productPrice {
+    font-weight: bold;
+}
+
 .productDescription {
     text-align: justify;
     padding: 5px;
 }
 
 @media screen and (max-width: 1130px) {
-    .mainPageContent {
+    .grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media screen and (max-width: 768px) {
-    .mainPageContent {
+    .grid {
         grid-template-columns: repeat(1, 1fr);
     }
 }
