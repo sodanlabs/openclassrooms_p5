@@ -13,10 +13,6 @@
   height: 25px;
 }
 
-.footer {
-  position: absolute;
-}
-
 .boxOfSelector {
   display: flex;
   align-items: center;

@@ -4,6 +4,8 @@ body {
   font-family: "Montserrat", Verdana, sans-serif;
   background-color: #f3e9f1;
   color: #261624;
+  position: relative;
+  min-height: 100vh;
 }
 
 .logo {
@@ -31,12 +33,14 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  position: relative;
+  position: absolute;
 }
 
 .messageDisplayed {
   text-align: center;
-  margin-top: 50%;
+  margin-top: 40vh;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .product {
@@ -88,16 +92,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
+    padding-top: 20px;
+    padding-bottom: 35px;
   }
 
   .product {
     width: 300px;
     margin: 20px auto;
-  }
-
-  .footer {
-    position: relative;
   }
 }
 
@@ -110,12 +111,21 @@ body {
   }
 
   .product {
-    width: 300px;
-    margin: 20px auto;
     grid-column: span 2;
   }
 
   .product:nth-last-child(1):nth-child(odd) {
     grid-column: 2 / span 2;
   }
+}
+
+@media screen and (min-width: 1024px) {
+    .mainPageContent,
+    .header,
+    .footer,
+    .messageDisplayed {
+        margin-left: auto;
+        margin-right: auto;
+        width: 1024px;
+    }
 }
