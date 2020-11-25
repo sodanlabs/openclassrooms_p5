@@ -5,8 +5,9 @@ body {
   background-color: #f3e9f1;
   color: #261624;
   min-height: 100vh;
-position: relative;
-padding-bottom: 30px;
+  /* max-width: 100vw; */
+  position: relative;
+  padding-bottom: 30px;
 }
 
 .logo {
@@ -102,6 +103,20 @@ padding-bottom: 30px;
     width: 300px;
     margin: 20px auto;
   }
+}
+
+@media screen and (max-width: 425px) {
+  .mainPageContent {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product {
+    max-width: 360px;
+  }
+
 }
 
 @media screen and (min-width: 768px) {
