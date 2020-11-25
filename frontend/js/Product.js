@@ -18,6 +18,7 @@ class Products {
 
         const productImage = document.createElement("img");
         productImage.setAttribute("src", this.imageUrl);
+        productImage.setAttribute("alt", this.name);
         productImage.classList.add("productImage");
 
         const productName = document.createElement("p");
@@ -51,15 +52,16 @@ class Products {
 
     appendProductVarnishSelector() {
         const productVarnishSelector = this.createVarnishSelector(this.varnish);
+        productVarnishSelector.id = "varnishSelector";
 
         const boxOfSelector = document.createElement('div');
         boxOfSelector.classList.add("boxOfSelector");
-        const selectionMessage = document.createElement('p');
-        selectionMessage.textContent = "Nos vernis disponible :"
 
-        productVarnishSelector.id = "varnishSelector";
-
-        boxOfSelector.appendChild(selectionMessage);
+        const selectionLabel = document.createElement('label');
+        selectionLabel.setAttribute('for', productVarnishSelector.id);
+        selectionLabel.textContent = "Nos vernis disponible :";
+        
+        boxOfSelector.appendChild(selectionLabel);
         boxOfSelector.appendChild(productVarnishSelector);
 
         const productInfo = document.getElementsByClassName("productInfo")[0];
